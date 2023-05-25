@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DialectDetector.com</title>
+	<script>
+		function eraseText() 
+		{
+		  document.getElementById("input_text").value = "";
+		}
+	</script>		
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			background-color: #f3f3f3;
+		}
+		h1 {
+			text-align: center;
+			margin-top: 50px;
+		}
+		form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-top: 50px;
+		}
+		input[type="text"] {
+			padding: 10px;
+			font-size: 16px;
+			border: none;
+			border-radius: 5px;
+			box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+			margin-bottom: 20px;
+			width: 300px;
+			max-width: 100%;
+		}
+		input[type="submit"] {
+			background-color: #007bff;
+			color: #fff;
+			padding: 10px 20px;
+			font-size: 16px;
+			border: none;
+			border-radius: 5px;
+			box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+			cursor: pointer;
+			transition: background-color 0.2s ease-in-out;
+		}
+		input[type="submit"]:hover {
+			background-color: #0062cc;
+		}
+		#result {
+			font-size: 18px;
+			font-weight: bold;
+			text-align: center;
+			margin-top: 50px;
+		}
+	</style>
+</head>
+<body>
+	<h1>Dialect Detector</h1>
+	<form method="POST">
+		<input type="text" name="input_text" placeholder="كلمني عربي ..." value="{{ input_text }}" onfocus="this.select();">
+		<input type="submit" value="Submit" onclick="eraseText()">
+	</form>
+	{% if prediction %}
+		<p id="result">{{ prediction }}</p>
+	{% endif %}
+</body>
+</html>
